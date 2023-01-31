@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="{{ url_for('static', filename='jquery.js') }}"></script>
+<script>
+$(document).ready(function(){
+$("button").css("background-color", "red");
+
+  $("button").click(function(){
+  $("button").css("background-color", "yellow");
+$.ajax({
+url: "{{url_for('ajx')}}", //url_for('res')
+type: 'POST',
+//dataType: 'html',
+contentType: "application/json",
+//data: JSON.stringify({'a': 'b'}),
+  success: function(data) { alert(data.x); let dsh= $("#dsh").val();  $("para").val(dsh); },  
+  error: function(result){ alert(JSON.stringify(result)); }
+});
+$("button").css("background-color", "green");
+  });
+});
+</script>
+</head>
+<body>
+
+<h3> This is an example of using the jQuery's ajax() method. </h3>
+<h4> Click the following button to see the effect. </h4>
+<input type="text" id="dsh" name="dish">
+<button onclick="ht"> submit </button>
+<p id = "para">nutri</p>
+
+</body>
+</html>
+<script>
+/*
+function ht(){
+var xhttp = new XMLHttpRequest();
+xhttp.open("POST", "{{url_for('showhome')}}", true);
+xhttp.setRequestHeader("Content-Type", "application/json");
+xhttp.onreadystatechange = function() {
+   if (this.readyState == 4 && this.status == 200) {
+     // Response
+     var response = this.responseText;
+   }
+};
+var data = {name:'yogesh',salary: 35000,email: 'yogesh@makitweb.com'};
+xhttp.send(JSON.stringify(data));
+}
+*/
+</script>
