@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+  <script>
+$(document).ready(function(){
+
+$("#sub").click(function() {
+sub.style.backgroundColor="yellow";
+$.ajax({
+type: "POST",
+url: "{{url_for('ajx')}}",
+ success: function(){
+   alert("yes") ;}
+  });
+});
+});
+
+</script>
+  
+</head>
+
+<body>
+  <div id="pge">
+    <h1>ajax post</h1>
+  </div>
+  <button id="sub"> submit </button>
+
+</body>
+
+</html>
+<script>
+const pg= document.getElementById("pge");
+
+var inp= document.createElement("input");
+var lbl= document.createElement('p');
+lbl.innerHTML= 'dg';
+pg.appendChild(inp);
+pg.appendChild(lbl);
+pg.addEventListener('click',updt);
+
+function updt(){
+  var dt= inp.value;
+lbl.innerHTML= dt;
+}
+</script>
+
